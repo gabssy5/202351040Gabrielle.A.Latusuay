@@ -167,7 +167,7 @@ aside a {
     color: #007BFF;
 }
 
-/* CSS LAYOUT (7) */
+
 header h1 {
     margin-top: 0;
     text-align: center;
@@ -182,7 +182,7 @@ img {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* CSS LAYOUT (8) */
+
 .content-wrapper {
     display: flex;
     padding: 20px;
@@ -200,7 +200,7 @@ main-content {
 }
 
 .column.side {
-    width: 21%;
+    width: 25%;
 }
 
 .column.middle {
