@@ -49,7 +49,6 @@
     </form>
   </div>
 
-  <!-- ========== FORM KONTAK ========== -->
   <div id="formKontak" style="display:none;">
     <form id="contactForm">
       <fieldset>
@@ -71,7 +70,6 @@
     </form>
   </div>
 
-  <!-- ========== FORM REGISTRASI ========== -->
   <div id="formRegistrasi" style="display:none;">
     <form id="registrasiForm">
       <fieldset>
@@ -111,7 +109,7 @@
     </form>
   </div>
 
-  <!-- ========== SCRIPT ========== -->
+
   <script>
     function showForm(id) {
       document.getElementById("formLogin").style.display = "none";
@@ -124,7 +122,7 @@
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;
 
-      if (username === "juns" && password === "admin") {
+      if (username === "admin" && password === "admin") {
         window.location.href = "https://www.youtube.com/";
       } else {
         alert("Username atau password salah!");
