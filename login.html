@@ -23,34 +23,160 @@
 
     <img src="g.jpg"  width="1336px" height="500px" style="margin-top: 10px;">
 
-    <div style="display: flex; padding: 20px;">
-        <form id="loginForm">
-            <fieldset>
-                <legend>Login</legend>
-    
-                <p>
-                    <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
-                </p>
-                
-                <p>
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
-               
-                <table bor = "0">
-                <tr>
-                    <td><button type="button" onclick="validasi()">login</button></td>
-                    <td></td>
-                    <td>
-                        <a href="register.html"><button type="button">register</button></a>
-                    </td>
-                    
-                </tr>
-                </table>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Gabungan</title>
+</head>
+<body>
+  <!-- ========== FORM LOGIN ========== -->
+  <div id="formLogin">
+    <form id="loginForm">
+      <fieldset>
+        <legend>Login</legend>
+        <p>
+          <label>Username:</label>
+          <input type="text" name="username" placeholder="username..." id="username" />
+        </p>
+        <p>
+          <label>Password:</label>
+          <input type="password" name="password" placeholder="password..." id="password" />
+        </p>
+        <p>
+          <label><input type="checkbox" name="remember" value="remember" /> Remember me</label>
+        </p>
+        <table border="0">
+          <tr>
+            <td><button type="button" onclick="validateLogin()">Login</button></td>
+            <td><button type="button" onclick="showForm('formRegistrasi')">Register</button></td>
+          </tr>
+        </table>
+      </fieldset>
+    </form>
+  </div>
 
-            </fieldset>
-        </form>
-        </div>
+  <!-- ========== FORM KONTAK ========== -->
+  <div id="formKontak" style="display:none;">
+    <form id="contactForm">
+      <fieldset>
+        <legend>Contact</legend>
+        <p>
+          <label>Name:</label>
+          <input type="text" name="name" placeholder="your name..." id="name" />
+        </p>
+        <p>
+          <label>Subject:</label>
+          <input type="text" name="subject" placeholder="subject..." id="subject" />
+        </p>
+        <p>
+          <label>Email:</label>
+          <input type="text" name="email" placeholder="your email..." id="email" />
+        </p>
+        <button type="button" onclick="sendMessage()">Send</button>
+      </fieldset>
+    </form>
+  </div>
+
+  <!-- ========== FORM REGISTRASI ========== -->
+  <div id="formRegistrasi" style="display:none;">
+    <form id="registrasiForm">
+      <fieldset>
+        <legend>Registrasi</legend>
+        <p><label>Nama:</label>
+          <input type="text" name="nama" placeholder="Nama lengkap..." id="nama" />
+        </p>
+        <p><label>Username:</label>
+          <input type="text" name="username" placeholder="Username..." id="usernameReg" />
+        </p>
+        <p><label>Email:</label>
+          <input type="text" name="email" placeholder="Your email..." id="emailReg" />
+        </p>
+        <p><label>Tanggal lahir:</label>
+          <input type="date" name="tanggal" id="tanggal" />
+        </p>
+        <p><label>Password:</label>
+          <input type="password" name="password" placeholder="Password..." id="passwordReg" />
+        </p>
+        <p><label>Jenis kelamin:</label>
+          <input type="radio" name="jenis_kelamin" value="laki-laki" id="laki" /> Laki-laki
+          <input type="radio" name="jenis_kelamin" value="perempuan" id="perempuan" /> Perempuan
+        </p>
+        <p><label>Agama:</label>
+          <select name="agama" id="agama">
+            <option value="Islam">Islam</option>
+            <option value="Kristen">Kristen</option>
+            <option value="Hindu">Hindu</option>
+            <option value="Budha">Budha</option>
+          </select>
+        </p>
+        <p><label>Biografi:</label>
+          <textarea name="biografi" id="biografi"></textarea>
+        </p>
+        <button type="button" onclick="konfirmasiRegistrasi()">Daftar</button>
+      </fieldset>
+    </form>
+  </div>
+
+  <!-- ========== SCRIPT ========== -->
+  <script>
+    function showForm(id) {
+      document.getElementById("formLogin").style.display = "none";
+      document.getElementById("formKontak").style.display = "none";
+      document.getElementById("formRegistrasi").style.display = "none";
+      document.getElementById(id).style.display = "block";
+    }
+
+    function validateLogin() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      if (username === "juns" && password === "admin") {
+        window.location.href = "https://www.youtube.com/";
+      } else {
+        alert("Username atau password salah!");
+      }
+    }
+
+    function sendMessage() {
+      var name = document.getElementById("name").value;
+      var subject = document.getElementById("subject").value;
+      var email = document.getElementById("email").value;
+
+      alert("Pesan terkirim!\nNama: " + name + "\nSubjek: " + subject + "\nEmail: " + email);
+
+      document.getElementById("name").value = "";
+      document.getElementById("subject").value = "";
+      document.getElementById("email").value = "";
+    }
+
+    function konfirmasiRegistrasi() {
+      var nama = document.getElementById("nama").value;
+      var username = document.getElementById("usernameReg").value;
+      var email = document.getElementById("emailReg").value;
+      var tanggal = document.getElementById("tanggal").value;
+      var password = document.getElementById("passwordReg").value;
+      var jenisKelamin = document.querySelector('input[name="jenis_kelamin"]:checked');
+      var agama = document.getElementById("agama").value;
+      var biografi = document.getElementById("biografi").value;
+
+      var jenisKelaminValue = jenisKelamin ? jenisKelamin.value : "Tidak dipilih";
+
+      var konfirmasi = "Konfirmasi Registrasi:\n\n" +
+        "Nama: " + nama + "\n" +
+        "Username: " + username + "\n" +
+        "Email: " + email + "\n" +
+        "Tanggal Lahir: " + tanggal + "\n" +
+        "Password: " + password + "\n" +
+        "Jenis Kelamin: " + jenisKelaminValue + "\n" +
+        "Agama: " + agama + "\n" +
+        "Biografi: " + biografi;
+
+      alert(konfirmasi);
+    }
+  </script>
+</body>
+</html>
 
         <aside style="flex: 1; background-color: #f0f0f0; padding: 10px;">
             <h3>Alternatif Link</h3>
